@@ -8,21 +8,18 @@ AGeneretedObjectV2::AGeneretedObjectV2()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-    
 }
 
 // Called when the game starts or when spawned
 void AGeneretedObjectV2::BeginPlay()
 {
-	Super::BeginPlay();
-	
+	Super::BeginPlay();	
 }
 
 // Called every frame
 void AGeneretedObjectV2::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 TArray<FColliderStruct> AGeneretedObjectV2::ParseTxt(FString FilePath, FString FileName)
@@ -33,8 +30,6 @@ TArray<FColliderStruct> AGeneretedObjectV2::ParseTxt(FString FilePath, FString F
 	TArray<FColliderStruct> ColliderStructArray;
 	std::string curline;
 	int avoidempty = -1;
-	//std::ofstream log_file("C:\\Users\\Calculateur 02\\Desktop\\dwylans_awesome_logs.txt", std::ios::app);
-	//log_file << "I'M ALIVE" << "\n"; //std::endl;
 	
 	while (std::getline(file, curline))
 	{
@@ -51,8 +46,6 @@ TArray<FColliderStruct> AGeneretedObjectV2::ParseTxt(FString FilePath, FString F
 			FVector vpos;
 			split(tail(curline), spos, "_");
 
-			//log_file << curline << "\n";
-
 			ColliderStruct.Index = std::stoi(spos[1]);
 		}
 		// Generate a Vertex Position
@@ -61,8 +54,6 @@ TArray<FColliderStruct> AGeneretedObjectV2::ParseTxt(FString FilePath, FString F
 			std::vector<std::string> spos;
 			FVector vpos;
 			split(tail(curline), spos, " ");
-
-			//log_file << curline << "\n";
 
 			vpos.X = std::stof(spos[0]);
 			vpos.Y = std::stof(spos[1]);
@@ -77,8 +68,6 @@ TArray<FColliderStruct> AGeneretedObjectV2::ParseTxt(FString FilePath, FString F
 			FVector tpos;
 			split(tail(curline), spos, " ");
 
-			//log_file << spos[0] << " " << spos[1] << " " << spos[2] << "\n";
-
 			tpos.X = std::stoi(spos[0])-1;
 			tpos.Y = std::stoi(spos[1])-1;
 			tpos.Z = std::stoi(spos[2])-1;
@@ -88,10 +77,7 @@ TArray<FColliderStruct> AGeneretedObjectV2::ParseTxt(FString FilePath, FString F
 			ColliderStruct.Triangles.Add(tpos.Z);
 		}
 	}
-	//log_file << "I'M DEAD" << std::endl;
 	ColliderStructArray.Add(ColliderStruct);
-	//log_file << "Size of element : " << ColliderStructArray.Num() << "\n";
-	//log_file.close();
 	file.close();
 	return ColliderStructArray;
 }
