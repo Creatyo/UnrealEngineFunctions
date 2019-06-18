@@ -55,10 +55,6 @@ public:
 public:
 	UFUNCTION(BlueprintCallable, meta = (Keywords = "ParseTxt"))
 		TArray<FColliderStruct> ParseTxt(FString FilePath, FString FileName);
-	/*UFUNCTION(BlueprintCallable, meta = (Keywords = "ParseTxtVertices"))
-		TArray<TArray<FVector>> ParseTxtVertices(FString FilePath, FString FileName);
-	UFUNCTION(BlueprintCallable, meta = (Keywords = "ParseTxtTriangles"))
-		TArray<TArray<int>> ParseTxtTriangles(FString FilePath, FString FileName);*/
 	UFUNCTION(BlueprintCallable, meta = (Keywords = "NbCollider"))
 		int RecupNbCollider(FString FilePath, FString FileName);
 	UFUNCTION(BlueprintCallable, meta = (Keywords = "Dimension"))
@@ -70,6 +66,4 @@ public:
 	void split(const std::string &in, std::vector<std::string> &out, std::string token);
 	std::string tail(const std::string &in);
 	std::string firstToken(const std::string &in);
-	
-
 };
